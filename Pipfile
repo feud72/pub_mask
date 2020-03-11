@@ -4,14 +4,16 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-flake8 = "*"
+zappa = "*"
 black = "*"
-ipython = "*"
+flake8 = "*"
 
 [packages]
 django = "*"
 django-dotenv = "*"
 requests = "*"
+boto3 = "*"
+django-storages = "*"
 
 [requires]
 python_version = "3.6"

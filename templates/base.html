@@ -1,10 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Public Mask</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/flatly/bootstrap.min.css" rel="stylesheet" integrity="sha384-yrfSO0DBjS56u5M+SjWTyAHujrkiYVtRYh2dtB3yLQtUz3bodOeialO59u5lUCFF" crossorigin="anonymous">
+    <title>공적마스크</title>
+    <!-- Bootstrap 4.4.1 CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
 </head>
 <body class="container" style="overflow-y:scroll; background-color: #F3969A11; padding-right:0; padding-left:0;">
 {% include 'nav.html' %}
@@ -12,7 +14,49 @@
     {% block content %}
     {% endblock content %}
     </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
 </body>
+	<script>
+		function getLocation() {
+			const options = {
+				maximumAge: 5 * 60 * 1000,
+				enableHighAccuracy: true,
+				timeout: 20000}
+			function success(ppos) { 
+				lat = ppos.coords.latitude; 
+				lng = ppos.coords.longitude; 
+				codeLatLng(lat, lng); 
+			}
+			function error(err) { 
+				const errorMessage = "Error:"; 
+				switch(err.code) { 
+					case err.TIMEOUT: 
+						errorMessage = 'Error: Attempts to retrieve location timed out.'; 
+						break; 
+					case err.POSITION_UNAVAILABLE: 
+						errorMessage = "Error: Your browser doesn't know where you are."; 
+						break; 
+					case err.PERMISSION_DENIED: 
+						errorMessage = 'Error: You have to give us permission!'; 
+						break; 
+					case err.UNKNOWN_ERROR: 
+						errorMessage = 'Error: Unknown error returned.'; 
+						break; 
+					default: 
+						errorMessage = 'Error: ' + err + ' ' + err.code; 
+				} 
+			}
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(success, error, options);
+			}
+		}
+function codeLatLng(lat, lng){
+ const locElements =	document.getElementsByClassName("js-location")
+	for (let i=0; i<locElements.length; i++){
+	locElements[i].setAttribute('href', "{% url 'geo:index' %}"+lat+"/"+lng)
+	}
+}
+getLocation();
+	</script>
 </html>

@@ -12,23 +12,9 @@
 </form>
 
 <ul class="list-group">
-{% for pharm in context.stores %}
+{% for store in context.stores %}
   <li class="list-group-item">
-<p>Store : {{ pharm.name}}</p><p>
-Address : {{ pharm.addr }}</p><p>
-Remaining : 
-<span class={% if pharm.remain_stat == "plenty" %}
-"btn btn-sm btn-success"
-{% elif pharm.remain_stat == "some" %}
-"btn btn-sm btn-warning"
-{% elif pharm.remain_stat == "few" %}
-"btn btn-sm btn-danger"
-{% elif pharm.remain_stat == "empty" %}
-"btn btn-sm btn-secondary"
-{% endif %}>
-{{ pharm.remain_stat }}</span>
-
-</p>
+		{% include 'store.html' with store=store %}
 </li>
 {% endfor %}
 </ul>

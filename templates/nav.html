@@ -1,17 +1,21 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-3">
-  <a class="navbar-brand" href="{% url 'home:index' %}">Public Mask</a>
+  <a class="navbar-brand" href="{% url 'home:index' %}">공적마스크</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url 'home:index' %}">Home<span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'home:index' %}">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'address:index' %}">Address</a>
+        <a class="nav-link" href="{% url 'address:index' %}">주소로 찾기</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link js-location" >내 주변 찾기</a>
+      </li>
+
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Search">

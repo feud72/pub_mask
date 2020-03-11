@@ -1,17 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="jumbotron text-center">
-  <h1 class="display-3">Hello, world!</h1>
-  <p class="lead">Maaaaaask</p>
+  <h1 class="display-3">Hello, maaask!</h1>
   <hr class="my-4">
-  <form method="POST" action="{% url 'address:index' %}" class="mb-3">
-    {% csrf_token %}
-    <div class="input-group mb-3">
-    <input type="text" class="form-control col-auto mr-3" id="inputAddress" name="address" aria-describedby="addressHelp" placeholder="Enter Address" value="충청남도 아산시 탕정면">
-    <div class="input-group-append">
-    <button type="submit" class="btn btn-primary col-auto">Submit</button>
-    </div>
-    </div>
-</form>
+	<div class="d-flex justify-content-around">
+			<a class="btn btn-primary btn-lg" href="{% url 'address:index' %}">주소로 찾기</a>
+			<a class="btn btn-primary btn-lg js-location" href="#" >
+				내 주변 찾기</a>
+	</div>
 </div>
 {% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<ul class="list-group">
+{% for store in context.stores %}
+  <li class="list-group-item">
+		{% include 'store.html' with store=store %}
+</li>
+{% endfor %}
+</ul>
+{% endblock content %}
