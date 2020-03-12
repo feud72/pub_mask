@@ -1,11 +1,8 @@
-import os
-
 from django.shortcuts import render, redirect
 from django.urls import reverse
 
-import requests
-
 from address.forms import SearchForm
+
 
 def homeView(request):
     if request.method == "GET":
@@ -15,7 +12,7 @@ def homeView(request):
         form = SearchForm(request.POST)
         if form.is_valid():
             address = form.cleaned_data["address"]
-            return redirect(reverse("address:address", args=[address] ))
+            return redirect(reverse("address:address", args=[address]))
         else:
             form = SearchForm()
-            return redirect(reverse("home:index"))        
+            return redirect(reverse("home:index"))
