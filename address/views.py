@@ -14,8 +14,6 @@ ADDR_API_KEY = os.environ.get("ADDR_API_KEY")
 
 ENDPOINT = "/storesByAddr/json"
 
-QUERY = "충청남도 아산시 탕정면"
-
 
 def searchView(request):
     if request.method == "POST":
@@ -30,7 +28,7 @@ def searchView(request):
 
 def processingKeyword(keyword=None):
     if keyword is None:
-        keyword = "서울특별시 강남구 신사동"
+        keyword = "충청남도 천안시 불당동"
     addr_raw = requests.get(
         url=ADDR_API_URL,
         params={
@@ -47,9 +45,9 @@ def processingKeyword(keyword=None):
             result = f'{addr.get("siNm")} {addr.get("sggNm")} {addr.get("emdNm")}'
             return result
         except Exception:
-            return "서울특별시 강남구 신사동"
+            return "충청남도 천안시 불당동"
     else:
-        return "서울특별시 강남구 신사동"
+        return "충청남도 천안시 불당동"
 
 
 def addressView(request, address=None):

@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "/home/feud72/.local/share/virtualenvs/pub_mask-uMpBcIUb/bin/python"
+    "python.pythonPath": "/home/feud72/.local/share/virtualenvs/pub_mask-uMpBcIUb/bin/python",
+    "python.formatting.provider": "black"
 }

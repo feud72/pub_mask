@@ -8,6 +8,11 @@ class Store(models.Model):
     def __str__(self):
         return self.name + " # " + self.region
 
+    @property
+    def remain_stat(self):
+        obj = self.stock_set.order_by("created_at").last()
+        return obj.status
+
 
 class Stock(models.Model):
     store = models.ForeignKey("Store", on_delete=models.CASCADE)

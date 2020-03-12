@@ -1,7 +1,15 @@
 {
     "dev": {
         "aws_region": "ap-northeast-2",
-        "django_settings": "config.settings",
+        "django_settings": "config.dev",
+        "profile_name": "default",
+        "project_name": "pub-mask",
+        "runtime": "python3.8",
+        "s3_bucket": "zappa-qysba0oxs"
+    },
+    "prod": {
+        "aws_region": "ap-northeast-2",
+        "django_settings": "config.product",
         "profile_name": "default",
         "project_name": "pub-mask",
         "runtime": "python3.8",

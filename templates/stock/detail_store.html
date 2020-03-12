@@ -3,10 +3,12 @@
 <p class="lead"><a href="{% url 'stock:list' %}">
 	Go Back</a></p>
 <h3>{{ store }}</h3>
+<div class="card border-secondary mb-3 p-3" >
 {% for item in stock %}
 <div class="d-flex">
 	<p class="mr-5">{{ item.created_at }}</p>
 <p>{{ item.status }}</p>
 </div>
 {% endfor %}
+</div>
 {% endblock content %}

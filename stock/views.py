@@ -17,12 +17,6 @@ def getJSON(address):
     return result
 
 
-def jsonToObj(jsonObj):
-    data = jsonObj.get("stores")
-    result = json.loads(data)
-    return result
-
-
 def getDataView(request):
     addr_list = ["충청남도 천안시 서북구 불당동", "충청남도 아산시 탕정면", "충청남도 아산시 배방읍", "충청남도 아산시 음봉면"]
     for addr in addr_list:
@@ -33,9 +27,7 @@ def getDataView(request):
             if created is False:
                 if Stock.objects.filter(store=obj.id).exists():
                     last_item = (
-                        Stock.objects.filter(store=obj.id)
-                        .order_by("-created_at")
-                        .last()
+                        Stock.objects.filter(store=obj.id).order_by("created_at").last()
                     )
                     if last_item.status == store["remain_stat"]:
                         continue
@@ -45,7 +37,15 @@ def getDataView(request):
 
 def storeListView(request):
     queryset = Store.objects.all()
-    return render(request, "stock/list_store.html", {"stores": queryset})
+    tang = queryset.filter(region__contains="탕정면")
+    bul = queryset.filter(region__contains="불당동")
+    bae = queryset.filter(region__contains="배방읍")
+    eum = queryset.filter(region__contains="음봉면")
+    return render(
+        request,
+        "stock/list_store.html",
+        {"querydict": {"탕정면": tang, "불당동": bul, "배방읍": bae, "음봉면": eum}},
+    )
 
 
 def storeDetailView(request, store):

@@ -1,5 +1,8 @@
 <h4>{{ store.name}}</h4>
-<p>주소 : {{ store.addr }}</p><p>
+{% if store.addr %} 
+<p>주소 : {{ store.addr }}</p>
+{% endif %}
+<p>
 재고 : 
 <span class={% if store.remain_stat == "plenty" %}
 "btn btn-sm btn-success"
@@ -7,12 +10,15 @@
 "btn btn-sm btn-warning"
 {% elif store.remain_stat == "few" %}
 "btn btn-sm btn-danger"
-{% elif store.remain_stat == "empty" %}
+{% elif store.remain_stat == "empty" or "None" %}
 "btn btn-sm btn-secondary"
-{% endif %}>
+{% endif %}
+>
 {{ store.remain_stat }}</span>
 </p>
+{% if store.stock_at %}
 <p>최근 입고 :
 {{ store.stock_at }}
 </p>
+{% endif %}
 
