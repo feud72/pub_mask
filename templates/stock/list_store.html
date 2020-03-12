@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for store in stores %}
+<p><a href="{% url 'stock:detail' store.name %}">
+			{{ store.name }}</a></p>
+{% endfor %}
+{% endblock content %}

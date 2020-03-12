@@ -6,4 +6,5 @@ urlpatterns = [
     path("", include("home.urls", namespace="home")),
     path("geo/", include("geo.urls", namespace="geo")),
     path("address/", include("address.urls", namespace="address")),
+    path("stock/", include("stock.urls", namespace="stock")),
 ]

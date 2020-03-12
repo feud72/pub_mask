@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<p class="lead"><a href="{% url 'stock:list' %}">
+	Go Back</a></p>
+<h3>{{ store }}</h3>
+{% for item in stock %}
+<div class="d-flex">
+	<p class="mr-5">{{ item.created_at }}</p>
+<p>{{ item.status }}</p>
+</div>
+{% endfor %}
+{% endblock content %}
