@@ -14,6 +14,10 @@ django-dotenv = "*"
 requests = "*"
 boto3 = "*"
 django-storages = "*"
+psycopg2-binary = "*"
 
 [requires]
 python_version = "3.6"
+
+[pipenv]
+allow_prereleases = true
