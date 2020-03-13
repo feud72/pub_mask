@@ -1,13 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
 <p class="lead"><a href="{% url 'stock:list' %}">
-	Go Back</a></p>
+리스트로 돌아가기</a></p>
 <h3>{{ store }}</h3>
 <div class="card border-secondary mb-3 p-3" >
 {% for item in stock %}
-<div class="d-flex">
+<div class="d-flex align-items-center">
 	<p class="mr-5">{{ item.created_at }}</p>
-<p>{{ item.status }}</p>
+<p class={% if item.status == "plenty" %}
+"btn btn-sm btn-success"
+{% elif item.status == "some" %}
+"btn btn-sm btn-warning"
+{% elif item.status == "few" %}
+"btn btn-sm btn-danger"
+{% elif item.status == "empty" or "None" %}
+"btn btn-sm btn-secondary"
+{% endif %}
+>
+{{ item.status }}</p>
 </div>
 {% endfor %}
 </div>

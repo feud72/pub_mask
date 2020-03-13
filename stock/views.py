@@ -1,5 +1,4 @@
 import os
-import json
 
 from django.shortcuts import render
 
@@ -32,7 +31,7 @@ def getDataView(request):
                     if last_item.status == store["remain_stat"]:
                         continue
             Stock.objects.create(store=obj, status=store["remain_stat"])
-    return render(request, "stock/list_store.html")
+    return render(request, "stock/get_data.html")
 
 
 def storeListView(request):

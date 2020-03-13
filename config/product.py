@@ -2,4 +2,4 @@ from .base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = ["sbv1x64i6b.execute-api.ap-northeast-2.amazonaws.com"]
+ALLOWED_HOSTS = ["43g1qpqtki.execute-api.ap-northeast-2.amazonaws.com"]
